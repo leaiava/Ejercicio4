@@ -23,21 +23,21 @@ bool_t semaforoActualizarModo(semaforoControl_t* ptrmiSemaforo){
 	case SEMAFORO_ALARMA:{
 		ptrmiSemaforo->modo = SEMAFORO_DESCONECTADO;
 		ptrmiSemaforo->color = SEMAFORO_AMARILLO;
-		delayInit (&(ptrmiSemaforo->delay), TIEMPO_ALARMA);
+		delayInit (&(ptrmiSemaforo->delay), TIEMPO_DESCONECTADO);
 	}
 	break;
 
 	case SEMAFORO_DESCONECTADO:{
 		ptrmiSemaforo->modo = SEMAFORO_NORMAL;
 		ptrmiSemaforo->color = SEMAFORO_ROJO;
-		delayInit (&(ptrmiSemaforo->delay), TIEMPO_DESCONECTADO);
+		delayInit (&(ptrmiSemaforo->delay), TIEMPO_ROJO_A_ROJOAMARILLO);
 	}
 	break;
 
 	case SEMAFORO_NORMAL:{
 		ptrmiSemaforo->modo = SEMAFORO_ALARMA;
 		ptrmiSemaforo->color = SEMAFORO_ROJO;
-		delayInit (&(ptrmiSemaforo->delay), TIEMPO_ROJO_A_ROJOAMARILLO);
+		delayInit (&(ptrmiSemaforo->delay), TIEMPO_ALARMA);
 	}
 	break;
 	default :
