@@ -4,10 +4,11 @@
  *  Created on: Jul 28, 2021
  *      Author: lea
  */
-#include "sapi.h"
 
 #ifndef _TECLAS_H_
 #define _TECLAS_H_
+
+#include "sapi.h"
 
 #define TECLAS_TODAS	4
 #define TIEMPO_RETARDO_TECLA 40
