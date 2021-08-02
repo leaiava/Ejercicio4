@@ -1,14 +1,15 @@
-/*
- * semaforo.c
- *
- *  Created on: Jul 29, 2021
- *      Author: lea
- */
+/*=============================================================================
+ * Author: Leandro Arrieta <leandroarrieta@gmail.com>
+ * 		   Jonathan Cagua <jonathan.cagua@gmail.com >
+ * Fecha: 02/08/2021
+ *===========================================================================*/
+
 #include "semaforo.h"
 
 
 bool_t semaforoInicializar(semaforoControl_t* ptrmiSemaforo){
-
+	if ( ptrmiSemaforo == NULL)
+		return false;
 	ptrmiSemaforo->modo = SEMAFORO_DESCONECTADO;
 	ptrmiSemaforo->color = SEMAFORO_AMARILLO;
 	delayInit (&(ptrmiSemaforo->delay), TIEMPO_DESCONECTADO);
@@ -42,6 +43,7 @@ bool_t semaforoActualizarModo(semaforoControl_t* ptrmiSemaforo){
 	break;
 	default :
 		semaforoInicializar(ptrmiSemaforo);
+		return false;
 	break;
 	}
 	return true;
@@ -129,6 +131,7 @@ bool_t semaforoActualizarColor(semaforoControl_t* ptrmiSemaforo){
 		return false;
 	return true;
 }
+
 bool_t semaforoEncenderLed(semaforoControl_t* ptrmiSemaforo){
 	if ( !ledApagarTodos() )
 		return false;

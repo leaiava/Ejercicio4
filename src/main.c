@@ -1,9 +1,8 @@
-/*
- * main.c
- *
- *  Created on: Jul 28, 2021
- *      Author: lea
- */
+/*=============================================================================
+ * Author: Leandro Arrieta <leandroarrieta@gmail.com>
+ * 		   Jonathan Cagua <jonathan.cagua@gmail.com >
+ * Fecha: 02/08/2021
+ *===========================================================================*/
 
 #include "teclas.h"
 #include "sapi.h"
