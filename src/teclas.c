@@ -5,12 +5,13 @@
  *===========================================================================*/
 
 #include "teclas.h"
+#include "uart.h"
 
 bool_t buttonInicializar(dbn_t* button){
 
 	if ( button == NULL)
 			return false;
-	//agregar validacion tecla.
+
 	delayInit (&(button->delay), TIEMPO_RETARDO_TECLA);
 	button->estado = BOTON_UP;
 	button->flagTeclaSePresiono = false;
@@ -50,7 +51,7 @@ bool_t buttonActualizar(dbn_t* button){
 static void buttonCambioAEstadoTransitorio(dbn_t* button , bool status){
 	if ( leerTecla( button->tecla) == status){
 		button->estado++;
-		//printf("BOTON ESTADO: %d \r\n" , button->estado);
+		UARTimprimirEstadoBoton(button);
 		delayWrite( &(button->delay), TIEMPO_RETARDO_TECLA );
 	}
 }
@@ -68,7 +69,7 @@ static void buttonCambioAEstadoFijo(dbn_t* button , bool status){
 				buttonPressed(button->tecla);
 				button->flagTeclaSePresiono = true;
 			}
-			//printf("BOTON LOOP: %d \r\n" , button->estado);
+			UARTimprimirEstadoBoton(button);
 		}
 		else {
 			button->estado--;
@@ -78,13 +79,11 @@ static void buttonCambioAEstadoFijo(dbn_t* button , bool status){
 
 bool_t buttonPressed(gpioMap_t tecla){
 
-	uartWriteString( UART_USB, "Se presiono una tecla\r\n" );
 	return true;
 }
 
 bool_t  buttonReleased(gpioMap_t tecla){
 
-	uartWriteString( UART_USB, "Se libero una tecla\r\n" );
 	return true;
 }
 bool_t buttonFlagSePresionoLeer(dbn_t* button){

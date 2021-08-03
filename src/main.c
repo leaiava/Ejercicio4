@@ -9,6 +9,7 @@
 #include "main.h"
 #include "semaforo.h"
 
+
 int main (void){
 
 	dbn_t button[TECLAS_TODAS];
@@ -17,7 +18,7 @@ int main (void){
 	boardInit();
 
 // Inicializar UART_USB a 115200 baudios
-   uartConfig( UART_USB, 115200 );
+	UARTInicializar( UART_USB, 115200 );
 
 	button[0].tecla = TEC1;
 	button[1].tecla = TEC2;

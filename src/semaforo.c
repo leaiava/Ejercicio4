@@ -5,7 +5,7 @@
  *===========================================================================*/
 
 #include "semaforo.h"
-
+#include "uart.h"
 
 bool_t semaforoInicializar(semaforoControl_t* ptrmiSemaforo){
 	if ( ptrmiSemaforo == NULL)
@@ -46,6 +46,7 @@ bool_t semaforoActualizarModo(semaforoControl_t* ptrmiSemaforo){
 		return false;
 	break;
 	}
+	UARTimprimirEstadoSemaforo( ptrmiSemaforo);
 	return true;
 }
 bool_t semaforoActualizarColor(semaforoControl_t* ptrmiSemaforo){
